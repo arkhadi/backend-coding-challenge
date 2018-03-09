@@ -1,48 +1,27 @@
-package com.engage.backendcodingchallenge.model;
+package com.engage.backendcodingchallenge.dto;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import org.apache.commons.lang3.builder.ToStringBuilder;
 
-import javax.persistence.*;
-import java.io.Serializable;
 import java.math.BigDecimal;
-import java.time.LocalDate;
+import java.util.Date;
 
-@Entity
-@Table(name = "EXPENSE")
-public class Expense implements Serializable {
+public class ExpenseDto {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "ID", unique = true, nullable = false)
-    private Integer id;
+    @JsonFormat(pattern = "dd/MM/yyyy")
+    private Date date;
 
-    @Column(name = "DATE", nullable = false)
-    private LocalDate date;
-
-    @Column(name = "AMOUNT", nullable = false)
     private BigDecimal amount;
 
-    @Column(name = "VAT", nullable = false)
     private BigDecimal vat;
 
-    @Column(name = "REASON")
     private String reason;
 
-    public Expense(){}
-
-    public Integer getId() {
-        return id;
-    }
-
-    public void setId(Integer id) {
-        this.id = id;
-    }
-
-    public LocalDate getDate() {
+    public Date getDate() {
         return date;
     }
 
-    public void setDate(LocalDate date) {
+    public void setDate(Date date) {
         this.date = date;
     }
 
